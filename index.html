@@ -1,52 +1,134 @@
-     <title>PARTY HARD</title>
-		<script type="text/javascript"> 
- //This javascript was apparently written by Tab, so give him credit i guess.
-			function cast(i) {
-				var ret = Number(i).toString(16);
-				while (ret.length < 2) ret="0"+ret;
-				return ret;
-			}
-			function exec(r,g,b) {
-				var c = "#" + cast(r) + cast(g) + cast(b);
-				document.body.style.backgroundColor = c;
-			}
-			function lim(i) {
-				return Math.min(Math.max(i,0),255);
-			}
- 
-			var r = 0xFF;	//initial red
-			var g = 0x00;	//initial green
-			var b = 0x00;	//initial blue
-			var s = 1;		//initial state
-			var t = 0;		//initial substate
-			var u = 0x10;	//stepsize
-			wark();
- 
-			function partyHard() {
-				setTimeout(partyHard, 10);
-				switch(s) {
- 
-					// Looks smoother
-					case 1: r-=u; g+=u; break;
-					case 2: g-=u; b+=u; break;
-					case 3: b-=u; r+=u; break;
- 
-					default: s=1; t=0;
-				}
-				t += u;
-				r = lim(r);
-				g = lim(g);
-				b = lim(b);
-				exec(r, g, b);
-				if(t >= 255) {
-					t = 0;
-					s++;
-				}
-			}
-		</script> 
-		<script type="text/javascript" src="http://api.bitp.it/bitp.it.js"></script>
-<script type="text/javascript">
-  bitpit({clientId: "7173", forceUIThread: true});
-</script>
-</head> 
-		<body onload="partyHard();" style="text-align: center; font-family:comic sans; font-size:10rem;" > PARTY
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Website Title</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="description" content="Student Homepage for Jeremy Karbowski">
+	<meta name="keywords" content="SGS">
+	<meta name="author" content="Jeremy Karbowski">
+	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+	<base href="http://people.emich.edu/jkarbows/" target="_blank">
+    
+	<style>
+		.navcontainer{display:flex;
+			padding-right:3rem;
+		}
+		
+		.container{display:flex;
+			padding:2rem;
+			padding-top:0;
+			padding-right:4rem;
+		}
+		
+		.child{margin:2rem;
+			flex-shrink:3;
+			padding-top:2rem;
+		}
+		
+		.schedule{margin:2rem;
+		}
+		
+		.pokemon{margin:2rem;}
+		
+	    body{color: #484848;
+		    font-family: メイリオ, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+		}
+		
+		header{box-shadow:0 .2rem .2rem 0 #484848;}
+		
+		h1{align:left;
+		    margin-left:4rem;
+			flex-grow:2;
+		}
+		
+		nav{align:right;
+		    margin-top:1.5rem;
+		}
+		
+		nav ul {list-style-type:none;
+			margin:1rem;
+		}
+		
+		nav ul li a{padding: 0 1rem;
+		text-decoration:none;
+		}
+		
+		a:hover{color:#22a71d}
+		
+		a{color:042b19;}
+	</style>
+</head>
+
+<body>
+    <header>
+	    <div class="navcontainer">
+		    <h1>Jeremy Karbowski</h1>
+			<nav>
+			    <ul>
+				    <li>
+						<a href="231"><img src="folder.gif" alt="this image took a surprising amount of time to find"></img>COSC 231 Folder</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	
+	<div class="container">
+		<div class="child">
+		    <p><span style="font-size:4rem;color:242424;line-height:0;">L</span>orem ipsum dolor sit 
+			amet, <em>consectetur adipiscing elit</em>, sed do eiusmod tempor 
+			incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+			exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+			dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+			Excepteur sint occaecat cupidatat <strong>non</strong> proident, sunt in culpa qui officia deserunt mollit 
+			anim id est laborum.</p>
+		</div>
+		<div class="schedule">
+			<h3>Fall 2015 Schedule</h3>
+			<ul>
+				<li>
+					<a href="">ANTH 135</a>
+				</li>
+				<li>
+					<a href="">ARTS 101</a>
+				</li>
+				<li>
+					<a href="">COSC 231</a>
+				</li>
+				<li>
+					<a href="">JPNE 343W</a>
+				</li>
+				<li>
+					<a href="">JPNE 344</a>
+				</li>
+				<li>
+					<a href="">MUSC 100</a>
+				</li>
+		</div>
+		<div class="pokemon">
+			<h3>Top 5 Pokemon</h3>
+			<ol>
+				<li>
+					Cubone
+				</li>
+				<li>
+					Mew
+				</li>
+				<li>
+					Pichu
+				</li>
+				<li>
+					Smeargle
+				</li>
+				<li>
+					Parasect
+				</li>
+			</ol>
+		</div>
+	</div>
+	<div class="container">
+	    <img src="row.jpg"></img>
+	</div>
+</body>
+</html>
