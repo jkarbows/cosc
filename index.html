@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -12,73 +11,89 @@
 	<base href="http://people.emich.edu/jkarbows/" target="_blank">
     
 	<style>
-		.navcontainer{display:flex;
-			padding-right:3rem;
+		.navcontainer {
+			display: flex;
+			padding-right: 3rem;
 		}
 		
-		.container{display:flex;
-			padding:2rem;
-			padding-top:0;
-			padding-right:4rem;
+		.container {
+			display: flex;
+			padding: 2rem;
+			padding-top: 0;
+			padding-right: 4rem;
 		}
 		
-		.child, .schedule, .pokemon{margin:2rem;}
+		.child,
+		.schedule,
+		.list {margin: 2rem;}
 		
-		.child{flex-shrink:3;
-			padding-top:2rem;
+		.child {
+			flex-shrink: 3;
+			padding-top: 2rem;
 		}
 		
-		#about{border:1px solid #484848;}
-		
-		.schedule table{font-size:80%;
-			border:1px solid #484848;
+		.schedule table {
+			background: #effab4;
+			font-size: 80%;
+			border: 1px solid #484848;
 		}
 		
-		.schedule tr:first-child{background:#f56991;}
+		.schedule tr:first-child {background: #f56991;}
 		
-		.schedule tr:nth-child(even){background:#d1f2a5;}
+		.schedule tr:nth-child(even) {background: #d1f2a5;}
 		
-		.schedule tr td:nth-child(3){text-align:center;}
+		.schedule tr td {text-align: center;}
 		
-		.rowimg{padding:3rem;
-			text-align:center;
+		.rowimg {
+			padding: 3rem;
+			text-align: center;
 		}
 		
-		.rowimg img{max-width:100%;}
+		.rowimg img {max-width: 100%;}
 		
-	    body{background:#effab4;
-	    	color: #484848;
-		    font-size:100%;
-
-			font-family: Meiryo, "Hiragino Kaku Gothic ProN", Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+	    body {
+			color: #484848;
+		    font-size: 100%;
+			font-family: メイリオ, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
 		}
 		
-		header{box-shadow:0 .2rem .2rem 0 #484848;
-			background:#f56991;
+		header {box-shadow: 0 0.2rem 0.2rem 0 #484848;}
+		
+		h1 {
+			align: left;
+		    margin-left: 4rem;
+			flex-grow: 2;
 		}
 		
-		h1{
-		    margin-left:4rem;
-			flex-grow:2;
+		nav {
+			align: right;
+		    margin-top: 1.5rem;
 		}
 		
-		nav{
-		    margin-top:1.5rem;
+		nav ul {
+			list-style-type: none;
+			margin: 1rem;
 		}
 		
-		nav ul {list-style-type:none;
-			margin:1rem;
+		nav ul li a {
+			padding: 0 1rem;
+			text-decoration: none;
 		}
 		
-		nav ul li a{padding: 0 1rem;
-		text-decoration:none;
+		nav ul li a img {padding-right: 0.5rem;}
+		
+		a:hover {color: #22a71d;}
+		
+		a {color: #042b19;}
+		
+		form {
+			width: 10px;
+			height: 10px;
+			font-size: 0.5em;
+			font-family: Comic Sans MS;
+			opacity=20%;
+			float: left;
 		}
-		
-		nav ul li a img{padding-right:.5rem;}
-		
-		a:hover{color:#ffc48c;}
-		
-		a{color:#ff9f80;}
 	</style>
 </head>
 
@@ -97,8 +112,8 @@
 	</header>
 	
 	<div class="container">
-		<div class="child" id="about">
-		    <p><span style="font-size:4rem;color:#242424;line-height:0;">L</span>orem ipsum dolor sit 
+		<div class="child">
+		    <p><span style="font-size:4rem;color:242424;line-height:0;">L</span>orem ipsum dolor sit 
 			amet, <em>consectetur adipiscing elit</em>, sed do eiusmod tempor 
 			incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
 			exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
@@ -165,23 +180,23 @@
 				</tr>
 			</table>
 		</div>
-		<div class="pokemon">
-			<h3>Top 5 Pokemon</h3>
+		<div class="list">
+			<h3>Top 5 Arabic numerals</h3>
 			<ol>
 				<li>
-					Cubone
+					0
 				</li>
 				<li>
-					Mew
+					8
 				</li>
 				<li>
-					Pichu
+					6
 				</li>
 				<li>
-					Smeargle
+					9
 				</li>
 				<li>
-					Parasect
+					V
 				</li>
 			</ol>
 		</div>
@@ -189,7 +204,12 @@
 	<div class="rowimg">
 	    <img src="row.jpg" alt="this was taken before class started" />
 	</div>
+	<footer>
+	<form id="party">
+		<input type="checkbox" name="party" value="on" onclick="partyHard();" onchange="change();">&copy;?
+	</form>
+	</footer>
+	
+	<script src="js/partyHard.js"></script>
 </body>
 </html>
-<!-- https://webaudio.github.io/web-midi-api/ -->
-<!-- https://developer.mozilla.org/en-US/docs/Creating_a_simple_synth -->
