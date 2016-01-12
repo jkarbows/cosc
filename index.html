@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -27,9 +28,17 @@
 			padding-top:2rem;
 		}
 		
+		#about{border:1px solid #484848;}
+		
 		.schedule table{font-size:80%;
 			border:1px solid #484848;
 		}
+		
+		.schedule tr:first-child{background:#f56991;}
+		
+		.schedule tr:nth-child(even){background:#d1f2a5;}
+		
+		.schedule tr td:nth-child(3){text-align:center;}
 		
 		.rowimg{padding:3rem;
 			text-align:center;
@@ -37,19 +46,23 @@
 		
 		.rowimg img{max-width:100%;}
 		
-	    body{color: #484848;
+	    body{background:#effab4;
+	    	color: #484848;
 		    font-size:100%;
-			font-family: メイリオ, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+
+			font-family: Meiryo, "Hiragino Kaku Gothic ProN", Osaka, 'MS PGothic', arial, helvetica, sans-serif;
 		}
 		
-		header{box-shadow:0 .2rem .2rem 0 #484848;}
+		header{box-shadow:0 .2rem .2rem 0 #484848;
+			background:#f56991;
+		}
 		
-		h1{align:left;
+		h1{
 		    margin-left:4rem;
 			flex-grow:2;
 		}
 		
-		nav{align:right;
+		nav{
 		    margin-top:1.5rem;
 		}
 		
@@ -63,9 +76,9 @@
 		
 		nav ul li a img{padding-right:.5rem;}
 		
-		a:hover{color:#22a71d}
+		a:hover{color:#ffc48c;}
 		
-		a{color:042b19;}
+		a{color:#ff9f80;}
 	</style>
 </head>
 
@@ -84,8 +97,8 @@
 	</header>
 	
 	<div class="container">
-		<div class="child">
-		    <p><span style="font-size:4rem;color:242424;line-height:0;">L</span>orem ipsum dolor sit 
+		<div class="child" id="about">
+		    <p><span style="font-size:4rem;color:#242424;line-height:0;">L</span>orem ipsum dolor sit 
 			amet, <em>consectetur adipiscing elit</em>, sed do eiusmod tempor 
 			incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
 			exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
@@ -122,15 +135,6 @@
 					<td>1345</td>
 					<td>Throne</td>
 					<td>120</td>
-				</tr>
-				<tr>
-					<td>Internet-based Computing</td>
-					<td>COSC 231</td>
-					<td>TR</td>
-					<td>1400</td>
-					<td>1550</td>
-					<td>Gurnee</td>
-					<td>515</td>
 				</tr>
 				<tr>
 					<td>Music Theory</td>
