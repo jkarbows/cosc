@@ -1,0 +1,29 @@
+HTML Homework  1/19/2016  Answer or give an example that demonstrates the following:
+
+1. Use <abbr> to annotate text.
+
+  <p>We use <abbr title="Cascading Style Sheets">CSS</abbr> to style webpages.</p>
+
+2. What URL is indicated by <a> attribute href="HW0112.html"?
+
+  [base URL]/HW0112.html
+
+3. What URL is indicated by <a> attribute href="google.com"?
+
+  [base URL]/google.com (most likely an invalid link)
+
+4. What URL is indicated by <a> attribute href="../231/HW0112.html"?
+
+  [parent URL]/231/HW0112.html
+
+5. Open a link to google.com in a new page (or tab).
+
+  <a href="http://google.com" target="_blank">link</a>
+
+6. Use the <img> attribute alt and the <img> attribute title.
+   What is the difference between the two?
+   
+  <img alt="example alt text" src="foo.jpg">
+  <img alt="" title="image title" src=bar.jpg">
+  
+  The alt attribute is required when using the img tag. It provides an alternative to your image in the case of the image not loading or users with screen readers. The title attribute pops up as a tooltip, and is a global html attribute.
