@@ -1,0 +1,20 @@
+img {
+  float: center;
+}
+
+.sel {
+  float: center;
+  display: inline;
+}
+
+.sel ul {
+  list-style-type: none;
+}
+
+.sel ul li a {
+  text-decoration: none;
+}
+
+.sel ul li a:hover {
+  background-color: #AEEEE;
+}
