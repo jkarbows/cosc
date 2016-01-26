@@ -1,20 +1,43 @@
 img {
-  float: center;
+  margin: auto;
+  max-width: 80%;
+  max-height: 800px;
 }
 
-.sel {
-  float: center;
-  display: inline;
+.frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-family: メイリオ, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+  background-color: #FFFFFF;
 }
 
-.sel ul {
+.frame p {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+}
+
+ul {
   list-style-type: none;
+  display: inline-flex;
+  -webkit-padding-start: 0;
 }
 
-.sel ul li a {
+ul li {
+  padding: 1rem;
+}
+
+ul li:hover {
+  background-color: #EEEEEE;
+}
+
+ul li a {
   text-decoration: none;
 }
 
-.sel ul li a:hover {
-  background-color: #AEEEE;
+ul li a:hover {
+  background-color: #CCCCCC;
 }
