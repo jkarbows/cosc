@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Website Title</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="description" content="Student Homepage for Jeremy Karbowski">
+	<meta name="keywords" content="SGS">
+	<meta name="author" content="Jeremy Karbowski">
+	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+	<base href="http://people.emich.edu/jkarbows/" target="_blank">
+    
+	<style>
+		.navcontainer {
+			display: flex;
+			padding-right: 3rem;
+		}
+		
+		.container {
+			display: flex;
+			padding: 2rem;
+			padding-top: 0;
+			padding-right: 4rem;
+		}
+		
+		.child,
+		.schedule,
+		.list {margin: 2rem;}
+		
+		.child {
+			flex-shrink: 3;
+			padding-top: 2rem;
+		}
+		
+		.schedule table {
+			background: #effab4;
+			font-size: 80%;
+			border: 1px solid #484848;
+		}
+		
+		.schedule tr:first-child {background: #f56991;}
+		
+		.schedule tr:nth-child(even) {background: #d1f2a5;}
+		
+		.schedule tr td {text-align: center;}
+		
+		.rowimg {
+			padding: 3rem;
+			text-align: center;
+		}
+		
+		.rowimg img {max-width: 100%;}
+		
+	    body {
+			color: #484848;
+		    font-size: 100%;
+			font-family: メイリオ, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+		}
+		
+		header {box-shadow: 0 0.2rem 0.2rem 0 #484848;}
+		
+		h1 {
+			align: left;
+		    margin-left: 4rem;
+			flex-grow: 2;
+		}
+		
+		nav {
+			align: right;
+		    margin-top: 1.5rem;
+		}
+		
+		nav ul {
+			list-style-type: none;
+			margin: 1rem;
+		}
+		
+		nav ul li a {
+			padding: 0 1rem;
+			text-decoration: none;
+		}
+		
+		nav ul li a img {padding-right: 0.5rem;}
+		
+		a:hover {color: #22a71d;}
+		
+		a {color: #042b19;}
+		
+		form {
+			height: 10px;
+			font-size: 0.8em;
+			font-family: Comic Sans MS;
+			opacity: 0.4;
+			float: left;
+		}
+	</style>
+</head>
+
+<body>
+    <header>
+	    <div class="navcontainer">
+		    <h1>Jeremy Karbowski</h1>
+			<nav>
+			    <ul>
+				    <li>
+						<a href="231"><img src="folder.gif" alt="this took a surprising amount of time to find">COSC 231 Folder</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	
+	<div class="container">
+		<div class="child">
+		    <p><span style="font-size:4rem;color:242424;line-height:0;">L</span>orem ipsum dolor sit 
+			amet, <em>consectetur adipiscing elit</em>, sed do eiusmod tempor 
+			incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+			exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+			dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+			Excepteur sint occaecat cupidatat <strong>non</strong> proident, sunt in culpa qui officia deserunt mollit 
+			anim id est laborum.</p>
+		</div>
+		<div class="schedule">
+			<h3>Fall 2015 Schedule:</h3>
+			<table>
+				<tr>
+					<th>Class</th>
+					<th>CRN</th>
+					<th>Days</th>
+					<th>Begin</th>
+					<th>End</th>
+					<th>Instructor</th>
+					<th>Rm. No</th>
+				</tr>
+				<tr>
+					<td>Intro to Cult Anth</td>
+					<td>ANTH 135</td>
+					<td>MW</td>
+					<td>1400</td>
+					<td>1515</td>
+					<td>Garcia</td>
+					<td>231</td>
+				</tr>
+				<tr>
+					<td>Intro to Art</td>
+					<td>ARTS 101</td>
+					<td>TR</td>
+					<td>1230</td>
+					<td>1345</td>
+					<td>Throne</td>
+					<td>120</td>
+				</tr>
+				<tr>
+					<td>Music Theory</td>
+					<td>MUSC 100</td>
+					<td>MW</td>
+					<td>0930</td>
+					<td>1045</td>
+					<td>Mozart</td>
+					<td>215</td>
+				</tr>
+				<tr>
+					<td>Japanese Composition</td>
+					<td>JPNE 343W</td>
+					<td>TR</td>
+					<td>1100</td>
+					<td>1215</td>
+					<td>Oketani</td>
+					<td>305</td>
+				</tr>
+				<tr>
+					<td>Japanese Conversation</td>
+					<td>JPNE 344</td>
+					<td>MW</td>
+					<td>1530</td>
+					<td>1645</td>
+					<td>保田</td>
+					<td>305</td>
+				</tr>
+			</table>
+		</div>
+		<div class="list">
+			<h3>Top 5 Arabic numerals</h3>
+			<ol>
+				<li>
+					0
+				</li>
+				<li>
+					8
+				</li>
+				<li>
+					6
+				</li>
+				<li>
+					9
+				</li>
+				<li>
+					V
+				</li>
+			</ol>
+		</div>
+	</div>
+	<div class="rowimg">
+	    <img src="row.jpg" alt="this was taken before class started" />
+	</div>
+	<footer>
+	<form id="party">
+		<input type="checkbox" name="party" value="on" onclick="partyHard();" onchange="change();">&copy;?
+	</form>
+	</footer>
+	
+	<script src="js/partyHard.js"></script>
+</body>
+</html>
