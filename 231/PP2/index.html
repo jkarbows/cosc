@@ -3,18 +3,106 @@
 <head>
   <title>Great Chain of Being</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content="COSC 231-0, PP#2">
   <meta name="author" content="Jeremy Karbowski">
   <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-  <base href="http://people.emich.edu/jkarbows/" target="_blank">
+  <base href="http://people.emich.edu/jkarbows/231/PP2/" target="_blank">
   <style>
-
+  body {
+    color: #00010c;
+    font-size: 100%;
+    font-family: メイリオ, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+    text-align: center;
+    background-color: #fefefe;
+    margin: 0;
+    overflow: hidden;
+  }
+  
+  nav {
+    width: 100%;
+    color: #fefefe;
+    text-shadow: 2px 1px #00010c;
+    background: #72517c;
+    background-image: linear-gradient(111deg, #72517c, #fefefe);
+    border: 1px solid #b1b7d1;
+    margin: 0 0 1em;
+  }
+  
+  .container img {
+    height: 200px;
+    width: 200px;
+  }
+  
+  img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  button {
+    background-color: #e3c9e6;
+    border: 1px solid #b1b7d1;
+    display: inline-block;
+    cursor: pointer;
+    color: #484848;
+    font-family: メイリオ, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+    font-size: 0.95em;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    transition: all 0.4s;
+  }
+  
+  button:hover {
+    background-color: #d1b1c8;
+  }
+  
+  button:active {
+    position: relative;
+    top: 2px;
+  }
   </style>
 </head>
 
 <body>
+<div class="container">
+  <nav>
+    <h1>The Great Chain of Beans</h1>
+  </nav>
+  <h3>Glory Be</h3>
+  <img src="1.jpg" alt="CHAIN">
+</div>
+<br><br>
+  <img src="1.jpg" alt="The Most High">
+  <img src="2.jpg" alt="Winged Dudes">
+  <img src="3.jpg" alt="Hugh Mann">
+  <img src="4.png" alt="Rat">
+  <img src="5.jpg" alt="Bush">
+  <img src="6.jpg" alt="Fungus">
+  <img src="7.jpg" alt="Minerals">
+<br>
+<button onclick="butts(0)">Previous</button>
+<button onclick="butts(1)">Next</button>
+<script>
+var images = document.getElementsByTagName('img');
+var title = document.getElementsByTagName('h3')[0];
+for(var i = 1, j = images.length; i < j; i++) {
+  (function(index) {
+    images[i].onclick = function() {
+      images[0].src = images[index].src;
+      title.innerHTML = images[index].alt;
+    };
+  })(i);
+}
+i = 1;
 
+function butts(butt) {
+  butt ? (i === (images.length - 1) ? i = 0 : i) : (i === 1 ? i = images.length : i);
+  butt ? i++ : i--;
+  images[0].src = images[i].src;
+  title.innerHTML = images[i].alt;
+}
+</script>
 </body>
 </html>

@@ -1,0 +1,61 @@
+body {
+  color: #00010c;
+  font-size: 100%;
+  font-family: ƒƒCƒŠƒI, "Hiragino Kaku Gothic ProN", "ƒqƒ‰ƒMƒmŠpƒS ProN W3", sans-serif;
+  text-align: center;
+  background-color: #fefefe;
+  margin: 0;
+  overflow: hidden;
+}
+
+nav {
+  width: 100%;
+  color: #fefefe;
+  text-shadow: 2px 1px #00010c;
+  background: #72517c;
+  background: linear-gradient(to bottom right, #72517c, #fefefe);
+  border: 1px solid #b1b7d1;
+  margin: 0 0 1em;
+}
+
+.container img {
+  height: 200px;
+  width: 200px;
+}
+
+img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  object-position: center;
+}
+
+img: hover {
+  border: 1px solid #b1b7d1;
+  position: relative;
+  top: 1px;
+}
+
+button {
+  background-color: #e3c9e6;
+  border: 1px solid #b1b7d1;
+  display: inline-block;
+  cursor: pointer;
+  color: #484848;
+  font-family: ƒƒCƒŠƒI, "Hiragino Kaku Gothic ProN", "ƒqƒ‰ƒMƒmŠpƒS ProN W3", sans-serif;
+  font-size: 0.95em;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  transition: transform .2s;
+}
+
+button:hover {
+  background-color: #d1b1c8;
+}
+
+button:active {
+  position: relative;
+  top: 1px;
+  transform: rotateX(180deg);
+}
