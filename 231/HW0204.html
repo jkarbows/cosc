@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>HW 02/04</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="description" content="">
+  <meta name="author" content="Jeremy Karbowski">
+
+  <style>
+  body{
+    text-align: center;
+  }
+  .box{
+    width: 40%;
+    height:  10em;
+  }
+  </style>
+  <script>
+  function put(){
+    var input = document.getElementById('input').value;
+    var output = document.getElementById('output');
+    if(document.getElementById('lc').checked===true){
+      output.innerHTML = input.toLowerCase();
+    } else {
+      output.innerHTML = input.toUpperCase();
+    }
+  }
+  </script>
+</head>
+
+<body>
+<form>
+  <textarea class="box" id="input" placeholder="Enter some input text here..." required="true"></textarea>
+  <textarea class="box" id="output" placeholder="And your output will appear here!" readonly="true"></textarea>
+  <fieldset style="border:none;">
+  <input type="radio" id="lc" name="case" onclick="put()">Set Lowercase</input>
+  <input type="radio" id="uc" name="case" onclick="put()">Set Uppercase</input>
+  </fieldset>
+</form>
+</body>
+</html>

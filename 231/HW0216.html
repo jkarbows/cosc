@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>HW</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="author" content="Jeremy Karbowski">
+
+  <style>
+  .box{
+    text-align: center;
+    margin: auto;
+  }
+  
+  .container{
+    position: fixed;
+    height: 300px;
+    width: 300px;
+    background-color: #f09c82;
+  }
+  
+  #redMover,
+  #greenMover{
+    position: relative;
+    height: 30px;
+    width: 30px;
+  }
+  
+  #redMover{
+    background-color: #6e1e32;
+  }
+  #greenMover{
+    background-color: #c0d890;
+  }
+  </style>
+  
+  <script>
+  function move(mover){
+    mover.style.marginTop = Math.floor(Math.random() * 270) + 'px';
+    mover.style.marginLeft = Math.floor(Math.random() * 270) + 'px';
+  }
+  </script>
+</head>
+
+<body>
+<div class="container">
+  <div id="redMover"></div>
+  <div id="greenMover"></div>
+</div>
+</body>
+<script>
+var container = document.getElementsByClassName('container');
+container[0].style.top = (window.innerHeight / 3) + 'px';
+container[0].style.left = (window.innerWidth / 3) + 'px';
+
+var redMover = document.getElementById('redMover');
+var greenMover = document.getElementById('greenMover');
+redMover.style.position = 'fixed';
+greenMover.style.position = 'fixed';
+//red 1/10s, green 1/2s
+setInterval(move, 100, redMover);
+setInterval(move, 500, greenMover);
+</script>
+</html>

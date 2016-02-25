@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>HW 02/09</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="description" content="">
+  <meta name="author" content="Jeremy Karbowski">
+
+  <style>
+  body{
+    text-align: center;
+  }
+  #box{
+    position: fixed;
+    width: 30px;
+    height:  30px;
+    background-color: #ffb6c1;
+  }
+  </style>
+  <script>
+  var delta = 0;
+  function setDelta(d){
+    delta = d;
+  }
+
+  function jump(){
+    var topStyle = parseInt(box.style.top);
+    var leftStyle = parseInt(box.style.left);
+    box.style.top = topStyle + Math.floor((Math.random() * delta) - (delta / 2)) + 'px';
+    box.style.left = leftStyle + Math.floor((Math.random() * delta) - (delta / 2)) + 'px';
+  }
+  </script>
+</head>
+
+<body>
+<form>
+  <fieldset style="border:none;">
+  <input type="radio" id="small" name="jump" onclick="setDelta(10)">Small Jump</input>
+  <input type="radio" id="med" name="jump" onclick="setDelta(60)">Medium Jump</input>
+  <input type="radio" id="big" name="jump" onclick="setDelta(110)">Big Jump</input>
+  </fieldset>
+</form>
+<div id="box" onmouseover="jump()"></div>
+<script>
+var box = document.getElementById('box');
+if(!box.style.top){
+  box.style.top = (window.innerHeight / 3) + 'px';
+  box.style.left = (window.innerWidth / 2) + 'px';
+}
+</script>
+</body>
+</html>
