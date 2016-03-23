@@ -1,6 +1,8 @@
-# Assorted COSC Work
+# Assorted COSC Coursework
 --
 
-Image files should be on people.emich server.
+Most files are hosted at http://people.emich.edu/jkarbows
 
-Simple web pages and other assorted junk. Nothing worth viewing.
+Simple web pages and other assorted assignments and projects.
+
+not well maintained or necessarily current
