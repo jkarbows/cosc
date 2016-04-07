@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Project 4 - Web Drawing App</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="Jeremy Karbowski">
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <base href="http://people.emich.edu/jkarbows/" target="_blank">
+  <style>
+    body {
+      background: #eee;
+      color: #333;
+      font-family: メイリオ, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+      text-align: center;
+    }
+    canvas {
+      background: #fff;
+      border: 1px solid #ccc;
+    }
+    canvas:active {
+      cursor: default;
+    }
+    p {
+      font-weight: bold;
+    }
+    .container {
+      display: flex;
+      flex-flow: center; 
+      align-items: center;
+      justify-content: center;
+    }
+    .column {
+      display: flex;
+      flex-direction: column;
+      margin: 1em;
+    }
+    .color {
+      height: 50px;
+      width: 50px;
+      border: 1px solid #aaa;
+    }
+    .row {
+      display: flex;
+      justify-content: center;
+      margin: 1em;
+    }
+    .pen {
+      margin: 1em;
+      cursor: default;
+      border: 1px solid #eee;
+    }
+  </style>
+</head>
+
+<body>
+<div style="font-size:4em;" onclick="neighborStroke()">Draw!</div>
+<div class="container">
+  <div class="column">
+    <p>PEN</p>
+    <div style="background: #000000" class="color" onclick="setPalette(this)"></div>
+    <div style="background: #ffffff" class="color" onclick="setPalette(this)"></div>
+    <div style="background: #bbbbbb" class="color" onclick="setPalette(this)"></div>
+    <div style="background: #9932cc" class="color" onclick="setPalette(this)"></div>
+    <div style="background: #ff4500" class="color" onclick="setPalette(this)"></div>
+    <div style="background: #ac4545" class="color" onclick="setPalette(this)"></div>
+    <div style="background: #c7aa03" class="color" onclick="setPalette(this)"></div>
+    <div style="background: #43c198" class="color" onclick="setPalette(this)"></div>
+  </div>
+  <canvas id="draw" width="500" height="500"></canvas>
+  <div class="column">
+    <p>BG</p>
+    <div style="background: #ffffff" class="color" onclick="setColor(this)"></div>
+    <div style="background: #000000" class="color" onclick="setColor(this)"></div>
+    <div style="background: #dedeff" class="color" onclick="setColor(this)"></div>
+    <div style="background: #abcdef" class="color" onclick="setColor(this)"></div>
+    <div style="background: #ff4500" class="color" onclick="setColor(this)"></div>
+    <div style="background: #8d0000" class="color" onclick="setColor(this)"></div>
+    <div style="background: #ffff00" class="color" onclick="setColor(this)"></div>
+    <div style="background: #cd853f" class="color" onclick="setColor(this)"></div>
+  </div>
+</div>
+<div class="row">
+<div class="pen" onclick="blockStroke(this)">Square</div>
+<div class="pen" onclick="roundStroke(this)">Round</div>
+<div class="pen" onclick="sliceStroke(this)">Diagonal</div>
+<div class="pen" onclick="pixelStroke(this)">Pixels</div>
+<div class="pen" onclick="eraserStroke(this)">Eraser</div>
+</div>
+<script>
+'use strict';
+var canvas = document.getElementById('draw');
+var context = canvas.getContext('2d');
+var isDrawing = false;
+var points = [];
+var lastPoint = null;
+var lastBg = null;
+var lastCol = null;
+var lastPen = null;
+
+context.lineWidth = 5;
+context.lineCap = "square";
+context.strokeStyle = "#000000";
+
+canvas.onmousedown = function(e) {
+  let realX = e.clientX - canvas.offsetLeft;
+  let realY = e.clientY - canvas.offsetTop;
+  isDrawing = true;
+  lastPoint = { x: realX, y: realY};
+  points.push(lastPoint);
+  context.beginPath();
+  context.moveTo(realX-1, realY-1);
+  context.lineTo(realX, realY);
+  context.stroke();
+};
+
+canvas.onmousemove = function(e) {
+  if (isDrawing) {
+    let realX = e.clientX - canvas.offsetLeft;
+    let realY = e.clientY - canvas.offsetTop;
+    context.lineTo(realX, realY);
+    context.stroke();
+  }
+};
+
+canvas.onmouseup = function(e) {
+  context.closePath();
+  isDrawing = false;
+  points.length = 0;
+}
+
+canvas.onmouseleave = function(e) {
+  context.closePath();
+  isDrawing = false;
+}
+
+function blockStroke(el) {
+  if(lastPen !== null) {lastPen.style.border = "1px solid #eee";}
+  el.style.border = "1px solid #aaa";
+  lastPen = el;
+  
+  context.lineWidth = 5;
+  context.lineCap = "square";
+  context.lineJoin = "bevel";
+  context.globalCompositeOperation = "source-over";
+  
+  canvas.onmousemove = function(e) {
+    if (isDrawing) {
+      let realX = e.clientX - canvas.offsetLeft;
+      let realY = e.clientY - canvas.offsetTop;
+      context.lineTo(realX, realY);
+      context.stroke();
+    }
+  };
+}
+
+function roundStroke(el) {
+  if(lastPen !== null) {lastPen.style.border = "1px solid #eee";}
+  el.style.border = "1px solid #aaa";
+  lastPen = el;
+  
+  context.lineWidth = 5;
+  context.lineJoin = context.lineCap = "round";
+  context.globalCompositeOperation = "source-over";
+
+  canvas.onmousemove = function(e) {
+    if (isDrawing) {
+      let realX = e.clientX - canvas.offsetLeft;
+      let realY = e.clientY - canvas.offsetTop;
+      context.lineTo(realX, realY);
+      context.stroke();
+    }
+  };
+}
+
+function sliceStroke(el) {
+  if(lastPen !== null) {lastPen.style.border = "1px solid #eee";}
+  el.style.border = "1px solid #aaa";
+  lastPen = el;
+  
+  context.lineWidth = 3;
+  context.lineJoin = "round";
+  context.lineCap = "butt";
+  context.globalCompositeOperation = "source-over";
+  
+  canvas.onmousemove = function(e) {
+    if(isDrawing) {
+      let realX = e.clientX - canvas.offsetLeft;
+      let realY = e.clientY - canvas.offsetTop;
+      
+      context.globalAlpha = 1;
+      context.moveTo(lastPoint.x, lastPoint.y);
+      context.lineTo(realX, realY);
+      context.stroke();
+      
+      context.moveTo(lastPoint.x - 4, lastPoint.y - 4);
+      context.lineTo(realX - 4, realY - 4);
+      context.stroke();
+      
+      context.moveTo(lastPoint.x - 2, lastPoint.y - 2);
+      context.lineTo(realX - 2, realY - 2);
+      context.stroke();
+      
+      context.moveTo(lastPoint.x + 2, lastPoint.y + 2);
+      context.lineTo(realX + 2, realY + 2);
+      context.stroke();
+      
+      context.moveTo(lastPoint.x + 4, lastPoint.y + 4);
+      context.lineTo(realX + 4, realY + 4);
+      context.stroke();
+        
+      lastPoint = { x: realX, y: realY };
+    }
+  };
+}
+
+function pixelStroke(el) {
+  if(lastPen !== null) {lastPen.style.border = "1px solid #eee";}
+  el.style.border = "1px solid #aaa";
+  lastPen = el;
+  
+  context.globalCompositeOperation = "source-over";
+  canvas.onmousemove = function(e) {
+    if(isDrawing) {
+      let realX = e.clientX - canvas.offsetLeft;
+      let realY = e.clientY - canvas.offsetTop;
+      for (var i = -10; i < 10; i += 4) {
+        for (var j = -10; j < 10; j += 4) {
+          if (Math.random() * 100 > 50) {
+            context.fillStyle = ['red', 'orange', 'yellow', 'green', 'light-blue', 'blue', 'purple'][~~(Math.random() * 6)];
+            context.fillRect(realX + i, realY + j, 4, 4);
+          }
+        }
+      }
+    }
+  }
+}
+
+function eraserStroke(el) {
+  if(lastPen !== null) {lastPen.style.border = "1 px solid #eee";}
+  el.style.border = "1px solid #aaa";
+  lastPen = el;
+  
+  context.lineWidth = 10;
+  context.lineJoin = context.lineCap = "round";
+  context.globalCompositeOperation = "destination-out";
+  canvas.onmousemove = function(e) {
+    if (isDrawing) {
+      let realX = e.clientX - canvas.offsetLeft;
+      let realY = e.clientY - canvas.offsetTop;
+      context.lineTo(realX, realY);
+      context.stroke();
+    }
+  };
+}
+
+function neighborStroke() {
+  context.lineWidth = 1;
+  context.globalCompositeOperation = "source-over";
+  var rgb = hex2rgb(context.strokeStyle);
+  canvas.onmousemove = function(e) {
+    if(isDrawing) {
+      let realX = e.clientX - canvas.offsetLeft;
+      let realY = e.clientY - canvas.offsetTop;
+      points.push({x: realX, y: realY});
+      var lastPoint = points[points.length - 1];
+      
+      context.moveTo(points[points.length - 2].x, points[points.length - 2].y);
+      context.lineTo(lastPoint.x, lastPoint.y);
+      context.stroke();
+      
+      for (var i = 0, l = points.length; i < l; i++) {
+        let dx = points[i].x - lastPoint.x;
+        let dy = points[i].y - lastPoint.y;
+        let d = dx * dx + dy * dy;
+        let shift = function (){return Math.random() * 0.25;}
+        
+        if (d < 1000) {
+          context.beginPath();
+          context.strokeStyle = "rgba(" + rgb.r + "," + rgb.g + "," + rgb.g + ",0.3)";
+          context.moveTo(lastPoint.x + (dx * shift()), lastPoint.y + (dy * shift()));
+          context.lineTo(points[i].x - (dy * shift()), points[i].y - (dy * shift()));
+          context.stroke();
+        }
+      }
+    }
+  }
+}
+
+function setColor(el) {
+  if(lastBg !== null) {lastBg.style.border = "1px solid #aaa";}
+  el.style.border = "1px solid #000";
+  lastBg = el;
+  var rgb = el.style.backgroundColor;
+  canvas.style.background = rgb2hex(rgb);
+}
+
+function setPalette(el) {
+  if(lastCol !== null) {lastCol.style.border = "1px solid #aaa";}
+  el.style.border = "1px solid #000";
+  lastCol = el
+  var rgb = el.style.backgroundColor;
+  context.strokeStyle = rgb2hex(rgb);
+}
+
+// from https://stackoverflow.com/questions/1740700/how-to-get-hex-color-value-rather-than-rgb-value
+function rgb2hex(rgb) {
+    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    function hex(x) {
+        return ("0" + parseInt(x).toString(16)).slice(-2);
+    }
+    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+}
+// from https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+function hex2rgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="Jeremy Karbowski">
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <base href="http://people.emich.edu/jkarbows/" target="_blank">
+  <style>
+  body {
+    background-color: #f4f4f4;
+    color: #5a5656;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+    text-align: center;
+    margin-top: 6em;
+  }
+  button {
+    background-color: #1bb2e9;
+    color: #f4f4f4;
+    cursor: pointer;
+    height: 50px;
+    border: none;
+    border-radius: 0px 3px 3px 0px;
+    margin-top: 2em;
+  }
+  </style>
+  <script src="231/jquery.js"></script>
+  <script>
+  $(function() {
+    $('#rotateButton').on('click', function() {
+      var container = document.querySelector('#container');
+      var paras = document.querySelectorAll('p');
+      var frame = [];
+      for(var i = 0; i < paras.length; i++) {
+        frame.push(paras[i]);
+        container.removeChild(paras[i]);
+      }
+      frame.unshift(frame.pop());
+      console.log(frame);
+      for(var j = 0; j < frame.length; j++) {
+        $('#container').append(frame);
+      }
+    });
+  });
+  </script>
+</head>
+
+<body>
+<div id="container">
+<p>text1</p>
+<p>text2</p>
+<p>text3</p>
+<p>text4</p>
+</div>
+<button id="rotateButton">ROTATE DOWN</button>
+</body>
+</html>
